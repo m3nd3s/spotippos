@@ -7,8 +7,14 @@ class PropertyQuery
     super
   end
 
+  def blank?
+    ax.blank? && ay.blank? && by.blank? && bx.blank?
+  end
+
   def query
-    if valid?
+    if blank?
+      Property.all
+    elsif valid?
       Property.where("x > ? AND x < ?", ax, bx)
               .where("y < ? AND y > ?", ay, by)
     else
