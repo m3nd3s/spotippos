@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: %i(show update destroy)
 
   def index
-    @properties = Property.all
+    @properties = PropertyQuery.new(property_query_params).query
 
     render json: @properties
   end
@@ -24,5 +24,9 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:x, :y, :tytle, :price, :description, :beds, :baths, :square_meters)
+  end
+
+  def property_query_params
+    params.permit(:ax, :ay, :bx, :by)
   end
 end
