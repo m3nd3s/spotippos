@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ax: 1
+  ay: 1
+  bx: 1
+  by: 1
+
+two:
+  name: MyString
+  ax: 1
+  ay: 1
+  bx: 1
+  by: 1

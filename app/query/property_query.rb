@@ -13,9 +13,9 @@ class PropertyQuery
 
   def query
     if blank?
-      Property.all
+      Property.includes(:provinces).all
     elsif valid?
-      Property.where("x > ? AND x < ?", ax, bx)
+      Property.includes(:provinces).where("x > ? AND x < ?", ax, bx)
               .where("y < ? AND y > ?", ay, by)
     else
       Property.none

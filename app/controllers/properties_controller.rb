@@ -4,17 +4,21 @@ class PropertiesController < ApplicationController
   def index
     @properties = PropertyQuery.new(property_query_params).query
 
-    render json: { found_properties: @properties.size, properties: @properties.as_json(except: [:created_at, :updated_at]) }
+    render json: { found_properties: @properties.size, properties: @properties }
   end
 
   def create
     @property = Property.new(property_params)
 
     if @property.save
-      render json: @property.as_json(except: [:created_at, :updated_at]), status: :created, location: @property
+      render json: @property, status: :created, location: @property
     else
       render json: @property.errors, status: :unprocessable_entry
     end
+  end
+
+  def show
+    render json: @property
   end
 
   private

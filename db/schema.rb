@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214004814) do
+ActiveRecord::Schema.define(version: 20170217003931) do
 
   create_table "properties", force: :cascade do |t|
     t.integer  "x"
@@ -23,6 +23,23 @@ ActiveRecord::Schema.define(version: 20170214004814) do
     t.integer  "square_meters"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "properties_provinces", id: false, force: :cascade do |t|
+    t.integer "property_id", null: false
+    t.integer "province_id", null: false
+    t.index ["property_id", "province_id"], name: "index_properties_provinces_on_property_id_and_province_id"
+    t.index ["province_id", "property_id"], name: "index_properties_provinces_on_province_id_and_property_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "ax"
+    t.integer  "ay"
+    t.integer  "bx"
+    t.integer  "by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
