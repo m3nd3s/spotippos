@@ -29,7 +29,7 @@ Para executar o serviço localmente:
 rails s
 ```
 
-O Host para acesso a API estará executando no endereço `http://localhost/api/v1`:
+O Host para acesso a API estará executando no endereço `http://localhost:3000/api/v1`:
 
 * GET /properties
 * POST /properties
